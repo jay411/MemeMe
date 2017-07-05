@@ -177,19 +177,19 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     }
     func generateMemedImage() -> UIImage {
         bottomToolbar.isHidden = true
-        textFieldOne.isEnabled=false
-        textFieldTwo.isEnabled=false
+        textFieldTwo.isHidden=true
         topToolbar.isHidden=true
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
-        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        memedImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         bottomToolbar.isHidden = false
         topToolbar.isHidden=false
         
-        return memedImage
+        
+        return memedImage!
     }
     func save() {
         let meme = MemeModel(topText: textFieldOne.text!, bottomText: textFieldTwo.text!, originalImage: imagePicker.image!, memeImage: memedImage)
