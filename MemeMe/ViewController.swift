@@ -25,6 +25,15 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     @IBOutlet weak var bottomToolbar: UIToolbar!
     
+    @IBOutlet weak var topToolbar: UIToolbar!
+    
+    
+    
+    
+    @IBOutlet weak var imagePicker: UIImageView!
+    
+    var memedImage:UIImage?
+    
     
     
     
@@ -43,8 +52,6 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         textFieldTwo.textAlignment=NSTextAlignment.center
         textFieldOne.isEnabled=false
         textFieldTwo.isEnabled=false
-        textFieldOne.isHidden=true
-        textFieldTwo.isHidden=true
         imagePicker.contentMode=UIViewContentMode.scaleToFill
         subscribeToKeyboardNotifications()
         
@@ -57,8 +64,9 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("keyboard Hiding?")
+    
         textField.resignFirstResponder()
+        textField.borderStyle=UITextBorderStyle.none
         
         textField.backgroundColor=UIColor.clear
         
@@ -92,8 +100,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBOutlet weak var imagePicker: UIImageView!
+
     
     @IBAction func pickAnImage(_ sender: Any) {
         
@@ -113,8 +120,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     }
     
     @IBAction func shareButtonPressed(_ sender: Any) {
-        let activityItems=[imagePicker.image]
-        
+        let activityItems=generateMemedImage()
         let shareVC=UIActivityViewController(activityItems: [activityItems], applicationActivities: nil)
         self.present(shareVC, animated: true, completion: nil)
     }
@@ -129,7 +135,6 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         if let image=info[UIImagePickerControllerOriginalImage] as? UIImage{
             
             imagePicker.image=image
-            //let isCompleted = { print("finished") }
             self.dismiss(animated: true, completion: nil)
         }
     }
@@ -172,6 +177,9 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     }
     func generateMemedImage() -> UIImage {
         bottomToolbar.isHidden = true
+        textFieldOne.isEnabled=false
+        textFieldTwo.isEnabled=false
+        topToolbar.isHidden=true
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -179,8 +187,12 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         bottomToolbar.isHidden = false
+        topToolbar.isHidden=false
         
         return memedImage
+    }
+    func save() {
+        let meme = MemeModel(topText: textFieldOne.text!, bottomText: textFieldTwo.text!, originalImage: imagePicker.image!, memeImage: memedImage)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -90,6 +90,7 @@
                         <outlet property="imagePicker" destination="8JM-Jy-Pmc" id="6KB-In-i4G"/>
                         <outlet property="textFieldOne" destination="UsW-Pa-Y73" id="n0Z-ts-omy"/>
                         <outlet property="textFieldTwo" destination="Pqa-3U-vga" id="UcX-1u-hXe"/>
+                        <outlet property="topToolbar" destination="FzO-br-Lpk" id="fQm-jl-H8D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
