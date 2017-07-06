@@ -9,13 +9,6 @@
 import UIKit
 
 
-struct MemeModel {
-    var topText: String?
-    var bottomText:String?
-    var originalImage: UIImage?
-    var memeImage: UIImage?
-    
-}
 
 class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate {
     
@@ -77,6 +70,16 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         
         
         return true
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if(self.textFieldOne.isFirstResponder){
+            self.textFieldOne.resignFirstResponder()
+        }
+        if (self.textFieldTwo.isFirstResponder) {
+            self.textFieldTwo.resignFirstResponder()
+        }
+        view.frame.origin.y=0
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -212,6 +215,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     }
     func generateMemedImage() -> UIImage {
        self.showHideToolbars(show: true)
+
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -223,6 +227,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         return memedImage!
     }
     func save() {
+
         let memedImage:UIImage = generateMemedImage()
         print(textFieldTwo.text!)
         let meme = MemeModel(topText: textFieldOne.text!, bottomText: textFieldTwo.text!, originalImage: imagePicker.image!, memeImage: memedImage)
@@ -240,6 +245,9 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         view.frame.origin.y=0
         
     }
+
+    
+  
 }
 
 
