@@ -47,6 +47,7 @@
 		93F8C0AE1F0C9CA1002C7A90 /* MemeMeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemeMeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93F8C0B21F0C9CA1002C7A90 /* MemeMeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeMeUITests.swift; sourceTree = "<group>"; };
 		93F8C0B41F0C9CA1002C7A90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93F8C0C31F0F6C7D002C7A90 /* Times New Roman Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Times New Roman Bold.ttf"; path = "../../../../../Library/Fonts/Times New Roman Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +82,7 @@
 				93F8C0A61F0C9CA1002C7A90 /* MemeMeTests */,
 				93F8C0B11F0C9CA1002C7A90 /* MemeMeUITests */,
 				93F8C0901F0C9CA1002C7A90 /* Products */,
+				93F8C0C21F0F6C7D002C7A90 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,6 +125,14 @@
 				93F8C0B41F0C9CA1002C7A90 /* Info.plist */,
 			);
 			path = MemeMeUITests;
+			sourceTree = "<group>";
+		};
+		93F8C0C21F0F6C7D002C7A90 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				93F8C0C31F0F6C7D002C7A90 /* Times New Roman Bold.ttf */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -418,7 +428,7 @@
 				DEVELOPMENT_TEAM = 7PR5K9CPWS;
 				INFOPLIST_FILE = MemeMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Udacity.MemeMe;
+				PRODUCT_BUNDLE_IDENTIFIER = Udacity.MemeMeJay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -431,7 +441,7 @@
 				DEVELOPMENT_TEAM = 7PR5K9CPWS;
 				INFOPLIST_FILE = MemeMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Udacity.MemeMe;
+				PRODUCT_BUNDLE_IDENTIFIER = Udacity.MemeMeJay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -514,6 +524,7 @@
 				93F8C0B91F0C9CA1002C7A90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		93F8C0BA1F0C9CA1002C7A90 /* Build configuration list for PBXNativeTarget "MemeMeTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +533,7 @@
 				93F8C0BC1F0C9CA1002C7A90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		93F8C0BD1F0C9CA1002C7A90 /* Build configuration list for PBXNativeTarget "MemeMeUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +542,7 @@
 				93F8C0BF1F0C9CA1002C7A90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

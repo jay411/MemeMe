@@ -39,8 +39,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     let memeTextAttributes:[String:Any] =
         [NSStrokeColorAttributeName:UIColor.black,
-         NSForegroundColorAttributeName:UIColor.black,
-         NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 25)!,
+         NSForegroundColorAttributeName:UIColor.white,
          NSStrokeWidthAttributeName:5.0] //check NSFillColor
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +60,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
         textField.text=""
+        textField.backgroundColor=UIColor.white
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -77,11 +77,11 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         cameraButton.isEnabled=UIImagePickerController.isSourceTypeAvailable(.camera)
+       
         if let _=imagePicker.image{
             textFieldOne.isEnabled=true
             textFieldTwo.isEnabled=true
-            textFieldOne.isHidden=false
-            textFieldTwo.isHidden=false
+            
         }
         print("subscribing to keyboard")
         subscribeToKeyboardNotifications()
@@ -122,7 +122,15 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     @IBAction func shareButtonPressed(_ sender: Any) {
         let activityItems=generateMemedImage()
         let shareVC=UIActivityViewController(activityItems: [activityItems], applicationActivities: nil)
+        shareVC.completionWithItemsHandler={activity,completed,items,error in
+            if completed{
+                self.save()
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+        
         self.present(shareVC, animated: true, completion: nil)
+        
     }
     
     
@@ -133,7 +141,11 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image=info[UIImagePickerControllerOriginalImage] as? UIImage{
-            
+            textFieldOne.text=""
+            textFieldTwo.text=""
+            textFieldOne.backgroundColor=UIColor.white
+            textFieldTwo.backgroundColor=UIColor.white
+        
             imagePicker.image=image
             self.dismiss(animated: true, completion: nil)
         }
@@ -172,12 +184,11 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         print("KEYBOARD height called")
         
         let userInfo = notification.userInfo
-        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue 
         return keyboardSize.cgRectValue.height
     }
     func generateMemedImage() -> UIImage {
         bottomToolbar.isHidden = true
-        textFieldTwo.isHidden=true
         topToolbar.isHidden=true
         
         // Render view to an image
@@ -187,20 +198,24 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         UIGraphicsEndImageContext()
         bottomToolbar.isHidden = false
         topToolbar.isHidden=false
-        
+       
         
         return memedImage!
     }
     func save() {
+        let memedImage:UIImage = generateMemedImage()
+        print(textFieldTwo.text!)
         let meme = MemeModel(topText: textFieldOne.text!, bottomText: textFieldTwo.text!, originalImage: imagePicker.image!, memeImage: memedImage)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if(self.textFieldOne.isFirstResponder){
             self.textFieldOne.resignFirstResponder()
+            textFieldOne.backgroundColor=UIColor.clear
         }
         if (self.textFieldTwo.isFirstResponder) {
             self.textFieldTwo.resignFirstResponder()
+            textFieldTwo.backgroundColor=UIColor.clear
         }
         view.frame.origin.y=0
         
