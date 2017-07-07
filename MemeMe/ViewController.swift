@@ -40,7 +40,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     let memeTextAttributes:[String:Any] =
         [NSStrokeColorAttributeName:UIColor.black,
          NSForegroundColorAttributeName:UIColor.white,
-         NSStrokeWidthAttributeName:5.0] //check NSFillColor
+         NSStrokeWidthAttributeName:-5.0] //check NSFillColor
     override func viewDidLoad() {
         super.viewDidLoad()
         textFieldOne.delegate = self
