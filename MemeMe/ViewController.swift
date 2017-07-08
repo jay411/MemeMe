@@ -27,6 +27,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     @IBOutlet weak var topToolbar: UIToolbar!
     
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     
     
     
@@ -53,6 +54,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         textFieldOne.isEnabled=false
         textFieldTwo.isEnabled=false
         imagePicker.contentMode=UIViewContentMode.scaleToFill
+        cancelButton.isEnabled=false
         subscribeToKeyboardNotifications()
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -82,6 +84,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         if let _=imagePicker.image{
             textFieldOne.isEnabled=true
             textFieldTwo.isEnabled=true
+            cancelButton.isEnabled=true
             
         }
         print("subscribing to keyboard")
@@ -134,6 +137,15 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         
     }
     
+    @IBAction func cancelPressed(_ sender: Any) {
+        self.textFieldOne.text?.removeAll()
+        self.textFieldTwo.text?.removeAll()
+        self.imagePicker.image=nil
+        self.viewDidLoad()
+
+        
+        
+    }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         print("Cancel called")
