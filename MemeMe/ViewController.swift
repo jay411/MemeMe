@@ -203,18 +203,22 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue 
         return keyboardSize.cgRectValue.height
     }
+    
+    func showHideToolbars(show:Bool)
+    {
+        bottomToolbar.isHidden = show
+        topToolbar.isHidden=show
+        
+    }
     func generateMemedImage() -> UIImage {
-        bottomToolbar.isHidden = true
-        topToolbar.isHidden=true
+       self.showHideToolbars(show: true)
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         memedImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        bottomToolbar.isHidden = false
-        topToolbar.isHidden=false
-       
+        self.showHideToolbars(show: false)
         
         return memedImage!
     }
