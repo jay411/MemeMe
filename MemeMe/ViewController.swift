@@ -43,17 +43,19 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
          NSForegroundColorAttributeName:UIColor.white,
          NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 25)!,
          NSStrokeWidthAttributeName:-5.0] //check NSFillColor
+    
+    func textConfig(textField:UITextField,textAttributes:[String:Any])
+    {
+        textField.delegate=self
+        textField.defaultTextAttributes=memeTextAttributes
+        textField.textAlignment=NSTextAlignment.center
+        textField.isEnabled=false
+        textField.contentMode=UIViewContentMode.scaleAspectFit
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        textFieldOne.delegate = self
-        textFieldTwo.delegate = self
-        textFieldOne.defaultTextAttributes=memeTextAttributes
-        textFieldTwo.defaultTextAttributes=memeTextAttributes
-        textFieldOne.textAlignment=NSTextAlignment.center
-        textFieldTwo.textAlignment=NSTextAlignment.center
-        textFieldOne.isEnabled=false
-        textFieldTwo.isEnabled=false
-        imagePicker.contentMode=UIViewContentMode.scaleToFill
+        self.textConfig(textField: textFieldOne, textAttributes: memeTextAttributes)
+        self.textConfig(textField: textFieldTwo, textAttributes: memeTextAttributes)
         cancelButton.isEnabled=false
         subscribeToKeyboardNotifications()
         
@@ -104,21 +106,22 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func presentImagePicker(source:UIImagePickerControllerSourceType)
+    {
+        let pickerViewController=UIImagePickerController()
+        pickerViewController.delegate=self
+        pickerViewController.sourceType = source
+        self.present(pickerViewController, animated: true, completion: nil)
+    }
 
     
     @IBAction func pickAnImage(_ sender: Any) {
-        
-        let pickerViewController=UIImagePickerController()
-        pickerViewController.delegate=self
-        pickerViewController.sourceType = .photoLibrary
-        self.present(pickerViewController, animated: true, completion: nil)
+        self.presentImagePicker(source: .photoLibrary)
     }
     
     @IBAction func pickUsingCamera(_ sender: Any) {
-        let pickerViewController=UIImagePickerController()
-        pickerViewController.delegate=self
-        pickerViewController.sourceType = .camera
-        self.present(pickerViewController, animated: true, completion: nil)
+       self.presentImagePicker(source: .camera)
         
         
     }
