@@ -13,7 +13,6 @@ class MemeTableViewController: UIViewController,UITableViewDataSource,UITableVie
     var memes=[Meme]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        memes = appDelegate.memes
 
        
 
@@ -23,6 +22,8 @@ class MemeTableViewController: UIViewController,UITableViewDataSource,UITableVie
     @IBOutlet weak var tableView: UITableView!
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        memes = appDelegate.memes
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,10 +33,12 @@ class MemeTableViewController: UIViewController,UITableViewDataSource,UITableVie
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell=tableView.dequeueReusableCell(withIdentifier: "memeTableCell")!
+        let cell=tableView.dequeueReusableCell(withIdentifier: "memeTableCell") as! MemeTableCell
         let meme=self.memes[(indexPath as NSIndexPath).row]
-        cell.textLabel?.text=meme.topText!+meme.bottomText!
-        cell.imageView?.image=meme.memeImage
+        cell.cellText.text=meme.topText!
+        cell.cellImageView.image=meme.memeImage
+        
+
         return cell
         
     }
@@ -43,7 +46,8 @@ class MemeTableViewController: UIViewController,UITableViewDataSource,UITableVie
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if  self.memes.count==0{
             let createVC=self.storyboard!.instantiateViewController(withIdentifier: "ViewController")as! ViewController
-            self.navigationController!.present(createVC, animated: <#T##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+            self.navigationController!.present(createVC, animated: true, completion: nil
+            )
         }
         return self.memes.count
     }

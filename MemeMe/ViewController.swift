@@ -9,14 +9,6 @@
 import UIKit
 
 
-struct MemeModel {
-    var topText: String?
-    var bottomText:String?
-    var originalImage: UIImage?
-    var memeImage: UIImage?
-    
-}
-
 class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate {
     
     @IBOutlet weak var textFieldOne: UITextField!
@@ -225,7 +217,10 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     func save() {
         let memedImage:UIImage = generateMemedImage()
         print(textFieldTwo.text!)
-        let meme = MemeModel(topText: textFieldOne.text!, bottomText: textFieldTwo.text!, originalImage: imagePicker.image!, memeImage: memedImage)
+        let meme = Meme(topText: textFieldOne.text!, bottomText: textFieldTwo.text!, originalImage: imagePicker.image!, memeImage: memedImage)
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
