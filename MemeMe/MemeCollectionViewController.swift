@@ -25,6 +25,12 @@ class MemeCollectionViewController: UIViewController,UICollectionViewDelegate,UI
         
     }
 
+    @IBAction func addNewMeme(_ sender: Any) {
+        let storyboard = UIStoryboard (name: "Main", bundle: nil)
+
+        let createViewController=storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        self.present(createViewController, animated: false, completion: nil)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -57,6 +57,15 @@ class MemeTableViewController: UIViewController,UITableViewDataSource,UITableVie
     @IBAction func addMemePressed(_ sender: Any) {
         self.performSegue(withIdentifier: "tableToCreate", sender: self)
     }
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        
+         let storyboard = UIStoryboard (name: "Main", bundle: nil)
+        let detailVC=storyboard.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        
+        detailVC.meme=self.memes[(indexPath as NSIndexPath).row]
+        print("present called detail meme \(detailVC.meme?.topText)")
+        self.present(detailVC, animated: true, completion: nil)
+    }
     
 
     /*
