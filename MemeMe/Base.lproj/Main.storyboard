@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2Fq-iI-M1m">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2Fq-iI-M1m">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -133,6 +133,7 @@
                     <navigationItem key="navigationItem" id="COW-br-mjU"/>
                     <connections>
                         <outlet property="tableView" destination="wFq-1g-S35" id="m89-SA-GO3"/>
+                        <segue destination="T7g-Uc-Qex" kind="presentation" identifier="memeDetail" id="wAu-Wb-feA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h8k-MD-8s3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -252,13 +253,40 @@
             </objects>
             <point key="canvasLocation" x="2015.2" y="138.98050974512745"/>
         </scene>
+        <!--MemeDetailViewController-->
+        <scene sceneID="jKL-be-cfg">
+            <objects>
+                <viewController storyboardIdentifier="MemeDetailViewController" title="MemeDetailViewController" id="T7g-Uc-Qex" customClass="MemeDetailViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AJZ-rW-ORd"/>
+                        <viewControllerLayoutGuide type="bottom" id="kKn-ys-d1X"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kIl-dA-TPh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cHh-gD-TTO">
+                                <rect key="frame" x="16" y="20" width="343" height="627"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="memeImage" destination="cHh-gD-TTO" id="5nq-jt-aVv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Ya-Vi-8aC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1481" y="-531"/>
+        </scene>
         <!--Item 1-->
         <scene sceneID="khC-vO-uAE">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vOo-nI-TV7" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item 1" id="Wlj-Xp-yGv"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="W5d-zW-aNs">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="W5d-zW-aNs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -277,7 +305,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rI9-Kz-FFi" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item 2" id="mqk-Lg-D3u"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8cp-db-6r0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="8cp-db-6r0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

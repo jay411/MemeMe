@@ -11,6 +11,7 @@ import UIKit
 class MemeTableViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var memes=[Meme]()
+    var selectedMeme: Meme?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -59,12 +60,19 @@ class MemeTableViewController: UIViewController,UITableViewDataSource,UITableVie
     }
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
-         let storyboard = UIStoryboard (name: "Main", bundle: nil)
-        let detailVC=storyboard.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        self.selectedMeme=self.memes[(indexPath as NSIndexPath).row]
+//         let storyboard = UIStoryboard (name: "Main", bundle: nil)
+        self.performSegue(withIdentifier: "memeDetail", sender: self)
+//        let detailVC=storyboard.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+//        
+//        detailVC.meme=self.memes[(indexPath as NSIndexPath).row]
+//        print("present called detail meme \(detailVC.meme?.topText)")
+//        self.navigationController!.pushViewController(detailVC, animated: true)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     let controller=segue.destination as! MemeDetailViewController
+        controller.meme=self.selectedMeme
         
-        detailVC.meme=self.memes[(indexPath as NSIndexPath).row]
-        print("present called detail meme \(detailVC.meme?.topText)")
-        self.present(detailVC, animated: true, completion: nil)
     }
     
 
