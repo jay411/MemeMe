@@ -16,6 +16,8 @@ class MemeDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         memeImage.image=self.meme?.memeImage
+        self.tabBarController?.tabBar.isHidden=true
+        
 
         // Do any additional setup after loading the view.
     }
@@ -24,10 +26,18 @@ class MemeDetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func viewDidAppear(_ animated: Bool) {
-        print("\n view appeared")
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        print("\n view appeared")
+//        
+//    }
+//    
+    override func viewWillDisappear(_ animated: Bool) {
+    
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden=false
     }
-
+    
     /*
     // MARK: - Navigation
 

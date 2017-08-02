@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MemeTableViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class MemeTableViewController: UITableViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var memes=[Meme]()
     var selectedMeme: Meme?
@@ -20,7 +20,7 @@ class MemeTableViewController: UIViewController,UITableViewDataSource,UITableVie
         // Do any additional setup after loading the view.
     }
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var memeTableView: UITableView!
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         memes = appDelegate.memes
@@ -33,7 +33,8 @@ class MemeTableViewController: UIViewController,UITableViewDataSource,UITableVie
     }
     
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell=tableView.dequeueReusableCell(withIdentifier: "memeTableCell") as! MemeTableCell
         let meme=self.memes[(indexPath as NSIndexPath).row]
         cell.cellImage.image=meme.memeImage
@@ -45,33 +46,43 @@ class MemeTableViewController: UIViewController,UITableViewDataSource,UITableVie
         
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if  self.memes.count==0{
             let createVC=self.storyboard!.instantiateViewController(withIdentifier: "ViewController")as! ViewController
-            self.navigationController!.present(createVC, animated: true, completion: nil
-            )
+            self.present(createVC, animated: true, completion: nil)
+            
         }
         return self.memes.count
     }
     
 
     @IBAction func addMemePressed(_ sender: Any) {
-        self.performSegue(withIdentifier: "tableToCreate", sender: self)
+//        self.navigationController?.popViewController(animated: true)
+        let createVC=self.storyboard!.instantiateViewController(withIdentifier: "ViewController")as! ViewController
+        self.present(createVC, animated: true, completion: nil)
+//
+
+     
     }
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+     
         self.selectedMeme=self.memes[(indexPath as NSIndexPath).row]
-//         let storyboard = UIStoryboard (name: "Main", bundle: nil)
         self.performSegue(withIdentifier: "memeDetail", sender: self)
+//        let storyboard = UIStoryboard (name: "Main", bundle: nil)
+//
 //        let detailVC=storyboard.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
 //        
 //        detailVC.meme=self.memes[(indexPath as NSIndexPath).row]
-//        print("present called detail meme \(detailVC.meme?.topText)")
-//        self.navigationController!.pushViewController(detailVC, animated: true)
+////        print("present called detail meme \(detailVC.meme?.topText)")
+//        self.present(detailVC, animated: true, completion: nil)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier=="memeDetail" {
+            
      let controller=segue.destination as! MemeDetailViewController
         controller.meme=self.selectedMeme
+        }
+        
         
     }
     
