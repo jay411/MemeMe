@@ -38,7 +38,14 @@ class MemeTableViewController: UITableViewController {
         let cell=tableView.dequeueReusableCell(withIdentifier: "memeTableCell") as! MemeTableCell
         let meme=self.memes[(indexPath as NSIndexPath).row]
         cell.cellImage.image=meme.memeImage
-        cell.cellLabel.text=meme.topText
+        if let topText=meme.topText{
+            
+        
+        cell.cellTopText.text=topText
+        }
+        if let bottomText=meme.bottomText{
+            cell.cellBottomText.text=bottomText
+        }
 
         
 

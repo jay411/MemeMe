@@ -120,6 +120,15 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     @IBAction func shareButtonPressed(_ sender: Any) {
         let activityItems=generateMemedImage()
+        if self.imagePicker.image==nil{
+        let alertController = UIAlertController(title: "MemeCreator", message:
+            "Please select an image and create a meme", preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+        
+            self.present(alertController, animated: true, completion:nil)
+        }
+        else
+        {
         let shareVC=UIActivityViewController(activityItems: [activityItems], applicationActivities: nil)
         shareVC.completionWithItemsHandler={activity,completed,items,error in
             if completed{
@@ -129,7 +138,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         }
         
         self.present(shareVC, animated: true, completion: nil)
-        
+        }
     }
     
     @IBAction func cancelPressed(_ sender: Any) {

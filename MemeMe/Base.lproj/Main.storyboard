@@ -160,42 +160,56 @@
         <scene sceneID="1pn-xj-2iQ">
             <objects>
                 <tableViewController title="MemeTableViewController" id="SB8-tw-NkX" customClass="MemeTableViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="49" sectionHeaderHeight="28" sectionFooterHeight="28" id="QuO-Hp-P0g">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="86" sectionHeaderHeight="28" sectionFooterHeight="28" id="QuO-Hp-P0g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="memeTableCell" rowHeight="49" id="PWV-1D-jh3" customClass="MemeTableCell" customModule="MemeMe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="49"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="memeTableCell" rowHeight="86" id="PWV-1D-jh3" customClass="MemeTableCell" customModule="MemeMe" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="86"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PWV-1D-jh3" id="WIH-6N-sb4">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="48.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="85.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="lBy-tw-96X">
+                                            <rect key="frame" x="196" y="8" width="171" height="70"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top Text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdd-hM-UaR">
+                                                    <rect key="frame" x="0.0" y="0.0" width="85.5" height="70"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRD-sS-NzD">
+                                                    <rect key="frame" x="85.5" y="0.0" width="85.5" height="70"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p9j-cn-Xjg">
-                                            <rect key="frame" x="8" y="5" width="186" height="38.5"/>
+                                            <rect key="frame" x="8" y="5" width="186" height="76"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="186" id="Htd-Yj-ukA"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdd-hM-UaR">
-                                            <rect key="frame" x="235" y="20" width="42" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="zdd-hM-UaR" firstAttribute="leading" secondItem="p9j-cn-Xjg" secondAttribute="trailing" constant="41" id="9dH-SY-ZjF"/>
+                                        <constraint firstItem="lBy-tw-96X" firstAttribute="trailing" secondItem="WIH-6N-sb4" secondAttribute="trailingMargin" id="76u-JH-xbx"/>
+                                        <constraint firstItem="lBy-tw-96X" firstAttribute="leading" secondItem="p9j-cn-Xjg" secondAttribute="trailing" constant="2" id="DC1-hM-PpG"/>
                                         <constraint firstItem="p9j-cn-Xjg" firstAttribute="leading" secondItem="WIH-6N-sb4" secondAttribute="leadingMargin" id="DYf-ZF-oip"/>
+                                        <constraint firstItem="lBy-tw-96X" firstAttribute="top" secondItem="WIH-6N-sb4" secondAttribute="topMargin" id="H27-xz-LhL"/>
+                                        <constraint firstItem="lBy-tw-96X" firstAttribute="centerY" secondItem="WIH-6N-sb4" secondAttribute="centerY" id="MCb-h5-od7"/>
                                         <constraint firstItem="p9j-cn-Xjg" firstAttribute="centerY" secondItem="WIH-6N-sb4" secondAttribute="centerY" id="VGv-u3-K4M"/>
-                                        <constraint firstItem="p9j-cn-Xjg" firstAttribute="centerY" secondItem="zdd-hM-UaR" secondAttribute="centerY" constant="-5.75" id="aWe-Xi-8J9"/>
                                         <constraint firstItem="p9j-cn-Xjg" firstAttribute="top" secondItem="WIH-6N-sb4" secondAttribute="topMargin" constant="-3" id="isW-z5-kzi"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="cellBottomText" destination="eRD-sS-NzD" id="S32-Xk-4Wu"/>
                                     <outlet property="cellImage" destination="p9j-cn-Xjg" id="4ry-ib-98r"/>
-                                    <outlet property="cellLabel" destination="zdd-hM-UaR" id="RHY-oc-TzM"/>
+                                    <outlet property="cellTopText" destination="zdd-hM-UaR" id="tck-PR-mG7"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -347,6 +361,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="lsP-Fd-iDv"/>
+        <segue reference="0R8-FI-VNv"/>
     </inferredMetricsTieBreakers>
 </document>
