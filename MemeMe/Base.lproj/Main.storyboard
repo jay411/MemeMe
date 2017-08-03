@@ -136,12 +136,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cHh-gD-TTO">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cHh-gD-TTO">
                                 <rect key="frame" x="16" y="64" width="343" height="554"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="cHh-gD-TTO" secondAttribute="leading" id="8F1-gy-hkm"/>
+                            <constraint firstItem="cHh-gD-TTO" firstAttribute="trailing" secondItem="kIl-dA-TPh" secondAttribute="trailingMargin" id="Y9q-K0-UdE"/>
+                            <constraint firstItem="cHh-gD-TTO" firstAttribute="top" secondItem="AJZ-rW-ORd" secondAttribute="bottom" id="hhv-2i-Zcj"/>
+                            <constraint firstItem="kKn-ys-d1X" firstAttribute="top" secondItem="cHh-gD-TTO" secondAttribute="bottom" id="rJv-ea-r9S"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="memeImage" destination="cHh-gD-TTO" id="5nq-jt-aVv"/>
