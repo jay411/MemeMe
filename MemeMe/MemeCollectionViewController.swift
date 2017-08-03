@@ -33,10 +33,7 @@ class MemeCollectionViewController: UICollectionViewController{
         self.present(createVC, animated: true, completion: nil)
 
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

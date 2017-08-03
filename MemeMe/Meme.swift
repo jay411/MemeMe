@@ -6,7 +6,6 @@
 //  Copyright © 2017 jay raval. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 struct Meme {

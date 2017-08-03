@@ -28,7 +28,8 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     var memedImage:UIImage?
     
     
-    
+    let object = UIApplication.shared.delegate
+
     
     let memeTextAttributes:[String:Any] =
         [NSStrokeColorAttributeName:UIColor.black,
@@ -48,7 +49,10 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         super.viewDidLoad()
         self.textConfig(textField: textFieldOne, textAttributes: memeTextAttributes)
         self.textConfig(textField: textFieldTwo, textAttributes: memeTextAttributes)
+        let appDelegate = object as! AppDelegate
+        if appDelegate.memes.count == 0 {
         cancelButton.isEnabled=false
+        }
         subscribeToKeyboardNotifications()
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -145,6 +149,12 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         self.textFieldOne.text?.removeAll()
         self.textFieldTwo.text?.removeAll()
         self.imagePicker.image=nil
+        let appDelegate = object as! AppDelegate
+        if appDelegate.memes.count > 0{
+            self.dismiss(animated: true, completion: nil)
+            return
+        }
+
         self.viewDidLoad()
 
         
@@ -227,7 +237,6 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         let memedImage:UIImage = generateMemedImage()
         print(textFieldTwo.text!)
         let meme = Meme(topText: textFieldOne.text!, bottomText: textFieldTwo.text!, originalImage: imagePicker.image!, memeImage: memedImage)
-        let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
     }
